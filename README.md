@@ -28,8 +28,7 @@ tamil_font_path = "/mnt/e_disk/DA6401_Assignment3/NotoSansTamil-VariableFont_wdt
 Note: you may comment the below (from START to END) lines and directly copy paste the path of the model, which will be in artifacts folder of this repo as the file may be inaccessible for downloading from external accounts.
 
 ```python
-# === START === 
-
+# === START ===
 ENTITY     = 'navaneeth001'
 PROJECT    = 'Assignment3'
 SWEEP_ID   = 'd7qd4jns'  # ❗ Replace this with actual sweep ID
@@ -37,7 +36,6 @@ ARTIFACT_REF = 'navaneeth001/Assignment3/best-model:v151'
 OUTPUT_DIR = '/mnt/e_disk/DA6401_Assignment3/predictions_vannila'
 CSV_PATH   = os.path.join(OUTPUT_DIR, 'test_predictions.csv')
 
-# === Load best model config from sweep ===
 api      = Api()
 sweep    = api.sweep(f"{ENTITY}/{PROJECT}/{SWEEP_ID}")
 runs     = sweep.runs
@@ -52,12 +50,27 @@ eval_run = wandb.init(
 artifact     = eval_run.use_artifact(ARTIFACT_REF, type='model')
 download_dir = artifact.download()
 
-# === END === 
-
+# === END ===
 ```
-
+Before testing, you also change the colors in the code cell for preferable visualisation
 Test Samples:
 ![alt text](image.png)
+
+2. attentionSeq2Seq.ipynb:
+- This file contains solutions for question 5 to 7
+- I have trained an attention based model for performing the same transliteration task
+- output attention heatmap:
+![alt text](image-1.png)
+
+## Loading the dataset:
+
+- Download the Dakshina dataset from https://github.com/google-research-datasets/dakshina
+
+- The dataset should be download and placed in the following order:
+"dataset/dakshina_dataset_v1.0/ta"
+
+- you may replace ta with any other language like hi, ur, etc. available in the dataset
+
 
 ## Features
 
